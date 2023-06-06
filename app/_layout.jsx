@@ -1,4 +1,4 @@
-import { Stack } from "expo-router";
+import { Slot, Stack } from "expo-router";
 
 import {
   ThemeProvider,
@@ -6,7 +6,7 @@ import {
   DefaultTheme,
   useTheme,
 } from "@react-navigation/native";
-import { AuthProvider } from "../context/auth";
+import { AuthProvider } from "../src/context/auth";
 
 export default function Layout() {
   return (
