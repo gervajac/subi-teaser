@@ -12,7 +12,12 @@ export default function Layout() {
   return (
     <ThemeProvider value={DefaultTheme}>
       <AuthProvider>
-        <Stack />;
+        <Stack>
+          <Stack.Screen name="(auth)" options={{
+            headerShown: false,
+            
+          }} />
+        </Stack>
       </AuthProvider>
     </ThemeProvider>
   );

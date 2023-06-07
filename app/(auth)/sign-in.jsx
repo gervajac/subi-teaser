@@ -1,4 +1,4 @@
-import { Text, View, Button } from "react-native";
+import { Text, View, Button, SafeAreaView } from "react-native";
 import { useAuth } from "../../src/context/auth";
 import { TextInput } from "@react-native-material/core";
 import { Link, Tabs } from "expo-router";
@@ -19,13 +19,18 @@ export default function SignIn() {
   }
 
   return (
-    <View>
-      <Tabs.Screen options={{ tabBarLabel: "Login" }} />
+    <SafeAreaView style={{
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+  }}>
+      <View>
       <Text>Sign In</Text>
       <TextInput label="email" variant="standard" onChangeText={setEmail} />
       <TextInput label="password" variant="standard" onChangeText={setPassword} />
       <Button onPress={handleOnClick} title="Sign In" />
+      </View>
       <Link href="/register">Registrate 🚌</Link>
-    </View>
+    </SafeAreaView>
   );
 }
