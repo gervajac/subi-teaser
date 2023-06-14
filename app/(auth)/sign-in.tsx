@@ -6,16 +6,16 @@ import { useState } from "react";
 
 
 export default function SignIn() {
-  const { singIn } = useAuth();
+  // const { singIn } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleOnClick = () => {
-      singIn(email, password)
-         .catch(err => {
-             alert(err.message);
-          })
+      // singIn(email, password)
+      //    .catch(err => {
+      //        alert(err.message);
+      //     })
   }
 
   return (

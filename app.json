@@ -4,6 +4,10 @@
     "web": {
       "bundler": "metro"
     },
+    "android": {
+        "package": "com.subi.teaser",
+        "versionCode": 1
+    },
     "name": "subi-teaser",
     "slug": "subi-teaser"
   }

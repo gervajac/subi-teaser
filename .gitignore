@@ -10,5 +10,16 @@ npm-debug.*
 *.orig.*
 web-build/
 
+
+# environment file
+.env
+auth0-configuration.ts
+
 # macOS
 .DS_Store
+
+# JetBrains IDES
+.idea/
+
+# Visual Studio Code
+.vscode/

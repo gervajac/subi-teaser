@@ -5,20 +5,20 @@ import { Link, Tabs } from "expo-router";
 import { useState } from "react";
 
 export default function regist() {
-  const {regist } = useAuth();
+  // const {regist } = useAuth();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleOnClick = () => {
-        regist(email, password)
-            .then(user =>{
-                if(user){
-                    alert('Usuario registrado correctamente, ve a iniciar sesion');
-                }else {
-                    alert('Usuario no registrado');
-                }
-            })
+        // regist(email, password)
+        //     .then(user =>{
+        //         if(user){
+        //             alert('Usuario registrado correctamente, ve a iniciar sesion');
+        //         }else {
+        //             alert('Usuario no registrado');
+        //         }
+        //     })
     }
 
   return (

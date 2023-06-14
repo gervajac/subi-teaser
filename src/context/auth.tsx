@@ -8,17 +8,18 @@ export function useAuth() {
   return React.useContext(AuthContext);
 }
 
-function useProtectedRoute(user, setUser) {
+function useProtectedRoute(user: User, setUser: (user: User | undefined) => void) {
   const segments = useSegments();
   const router = useRouter();
 
   function getUserFromStorage() {
     AsyncStorage.getItem("user")
       .then((user) => {
-        setUser(JSON.parse(user));
+        if(user != null)
+          setUser(JSON.parse(user));
       })
       .catch((err) => {
-        setUser(null);
+        setUser(undefined);
       });
   }
 
@@ -38,17 +39,17 @@ function useProtectedRoute(user, setUser) {
     }
   }, [user, segments]);
 
-  async function regist(email, password) {
+  async function regist(email: string, password: string) {
     const user = { email, password };
+    // @ts-ignore
     const users = JSON.parse(await AsyncStorage.getItem("users")) || [];
     users.push(user);
     await AsyncStorage.setItem("users", JSON.stringify(users));
     return user;
   }
   
-  async function singIn(email, password) {
-    /**@type {Array} */
-    const users = JSON.parse((await AsyncStorage.getItem("users")) || "[]");
+  async function singIn(email: string, password: string) {
+    const users: User[] = JSON.parse((await AsyncStorage.getItem("users")) || "[]");
     const user = users.find((user) => user.email === email);
   
     if (user && user.password === password) {
@@ -61,27 +62,40 @@ function useProtectedRoute(user, setUser) {
   
   async function singOut() {
     await AsyncStorage.removeItem("user");
-    setUser(null);
+    setUser(undefined);
   }
   
   return {singIn, regist, singOut}
 }
 
+export interface User {
+  email: string;
+  password: string;
+}
 
-export function AuthProvider({ children }) {
-  const [user, setUser] = React.useState(null);
+export interface AuthContext {
+  regist: (email: string, password: string) => Promise<User>;
+  singIn: (email: string, password: string) => Promise<void>;
+  singOut: () => Promise<void>;
+  user: User | undefined;
+}
+
+export function AuthProvider( props: {children: React.ReactNode }) {
+  const [user, setUser] = React.useState<User>();
+  // @ts-ignore
   const {singIn, regist, singOut} = useProtectedRoute(user, setUser);
 
   return (
     <AuthContext.Provider
-      value={{
+    // @ts-ignore  
+    value={{
         regist,
         singIn,
         singOut,
         user,
       }}
     >
-      {children}
+      {props.children}
     </AuthContext.Provider>
   );
 }

@@ -12,8 +12,19 @@ const AuthLayout = () =>  (
                 tabBarLabel: "Login",
                 headerTitle: "Login",
                 tabBarIcon: ({ color, size }) => (
-                    <Ionicons name="md-checkmark-circle" size={32} color="green" />
+                    <Ionicons name="md-checkmark-circle" size={32} color="blue" />
                 ),
+                headerShown: false,
+             }} />
+              <Tabs.Screen 
+            name= "register"
+            options= {{ 
+                tabBarLabel: "Registro",
+                headerTitle: "Registro",
+                tabBarIcon: ({ color, size }) => (
+                    <Ionicons name="md-add-sharp" size={32} color="blue" />
+                ),
+                headerShown: false,
              }} />
     </Tabs>
 )
