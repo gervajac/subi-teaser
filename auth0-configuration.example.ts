@@ -4,6 +4,6 @@ interface Auth0Config {
 }
 
 export const auth0Config: Auth0Config = {
-    clientId: "client-id-hash",
-    domain: "domain.auth0.com",
+    clientId: "U9eZhNFhLemhM7cN42ijlTSqkTG3pKj4",
+    domain: "dev-o3oiqmf8nwbj4qxk.us.auth0.com",
 };
