@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import { useRouter, useSearchParams } from "expo-router";
+import { Link } from "expo-router";
 
 export default function Details() {
   const router = useRouter();
@@ -9,6 +10,7 @@ export default function Details() {
       <Text onPress={() => router.back()}>Details screen</Text>
       <Text>Email: {email}</Text>
       <Text>Password: {password}</Text>
+      <Link href="/AuthPopUp">Registrate 🚌</Link>
     </View>
   );
 }
