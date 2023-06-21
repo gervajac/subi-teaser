@@ -19,7 +19,7 @@ const App = () => {
 
     return (
         <Auth0Provider {...auth0Config}>
-        <ThemeProvider value={DarkTheme}>
+        <ThemeProvider value={DefaultTheme}>
             <Slot />
         </ThemeProvider>
         </Auth0Provider>
